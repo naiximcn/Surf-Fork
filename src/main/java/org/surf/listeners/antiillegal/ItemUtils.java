@@ -125,18 +125,18 @@ public class ItemUtils {
 
                         }
                         if (utils.isIllegal(item)) {
-                            inventory.remove(item);
+                            event.setCancelled(true);
                             illegalsFound = true;
                             itemStack = item;
                         }
                         if (utils.hasIllegalNBT(item)) {
-                            inventory.remove(item);
+                            event.setCancelled(true);
                             illegalsFound = true;
                             itemStack = item;
 
                         }
                         if (utils.hasIllegalAttributes(item)) {
-                            inventory.remove(item);
+                            event.setCancelled(true);
                             //TODO
 //                            item.getItemMeta().removeAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS);
 //                            item.getItemMeta().removeAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE);
@@ -154,22 +154,16 @@ public class ItemUtils {
                             itemStack = item;
                         }
                         if (utils.hasIllegalEnchants(item)) {
-                            for (Entry<Enchantment, Integer> enchantmentIntegerEntry : item.getEnchantments().entrySet()) {
-                                item.removeEnchantment(enchantmentIntegerEntry.getKey());
+                                event.setCancelled(true);
                                 illegalsFound = true;
                                 itemStack = item;
                             }
                         }
                         if (item.hasItemMeta()) {
                             ItemMeta meta = item.getItemMeta();
-                            if (utils.isEnchantedBlock(item)) {
-                                Iterator<Entry<Enchantment, Integer>> enchants = item.getEnchantments().entrySet()
-                                        .iterator();
+                                event.setCancelled(true);
                                 illegalsFound = true;
-                                itemStack = item;
-                                while (enchants.hasNext()) {
-                                    item.removeEnchantment(enchants.next().getKey());
-                                }
+                                itemStack = item
                             }
                         }
                     }
