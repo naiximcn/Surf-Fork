@@ -1,10 +1,10 @@
-name: Surf
-version: 3.2.12
+name: Surf-Fork
+version: 3.2.10
 main: org.surf.Main
-authors: [ 254n_m, Leeewith3Es, Dreeam ]
+authors: [ 254n_m, Leeewith3Es, Dreeam, NaixiNana]
 description:  ${project.description}
-website: https://breeze.asia
+website: https://github.com/Winds-Studio/Surf
 api-version: 1.19
 commands:
   surf:
-    description: The main command of Surf.
+    description: Surf Command.
